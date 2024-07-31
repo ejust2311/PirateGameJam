@@ -1,24 +1,62 @@
-[gd_scene load_steps=5 format=3 uid="uid://dslptg8f61y6x"]
+[gd_scene load_steps=9 format=3 uid="uid://dslptg8f61y6x"]
 
 [ext_resource type="Script" path="res://scripts/enemy2D.gd" id="1_gwghf"]
 [ext_resource type="Script" path="res://scripts/enemyAI2D.gd" id="2_0icun"]
+[ext_resource type="Texture2D" uid="uid://c4u041hav2252" path="res://assets/Animations_Sprite_Enemy3.png" id="2_khhb8"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4kbbf"]
-size = Vector2(4, 4)
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1wun"]
+atlas = ExtResource("2_khhb8")
+region = Rect2(0, 104, 52, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8acn"]
+atlas = ExtResource("2_khhb8")
+region = Rect2(0, 52, 52, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti760"]
+atlas = ExtResource("2_khhb8")
+region = Rect2(0, 0, 52, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_778qi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1wun")
+}],
+"loop": false,
+"name": &"stand_front",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8acn")
+}],
+"loop": false,
+"name": &"walk_left",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti760")
+}],
+"loop": false,
+"name": &"walk_right",
+"speed": 0.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5rp2y"]
-size = Vector2(4, 4)
+size = Vector2(2.9, 3.1)
 
 [node name="BasicFlyingEnemy" type="CharacterBody2D"]
 script = ExtResource("1_gwghf")
 affected_by_gravity = false
 movement_speed = 2500
 
-[node name="EnemySprite" type="Sprite2D" parent="."]
-scale = Vector2(10, 10)
-texture = SubResource("PlaceholderTexture2D_4kbbf")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_778qi")
+animation = &"walk_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 10.5)
 scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_5rp2y")
 

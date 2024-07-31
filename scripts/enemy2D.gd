@@ -3,6 +3,8 @@ class_name Enemy2D
 
 extends CharacterBody2D
 
+@onready var _animated_sprite = $AnimatedSprite2D
+
 # Basic attributes
 @export var body_damage := 10
 @export var max_health := 100
@@ -43,7 +45,8 @@ func _process(delta):
 		# Move in accordance with velocity
 		last_velocity = velocity
 		move_and_slide()
-
+	
+	
 # Applies the current movement velocity to the enemy
 func apply_move_velocity(delta, ainode):
 	var type = ainode.movement_type
@@ -60,6 +63,14 @@ func apply_move_velocity(delta, ainode):
 	elif type == 3 and not jumped:
 		velocity = movement_velocity
 		jumped = true
+	
+	# play animations
+	if velocity.x > 0:
+		_animated_sprite.play("walk_left")
+	elif velocity.x < 0:
+		_animated_sprite.play("walk_right")
+	else:
+		_animated_sprite.play("stand_front")
 
 # Will only apply velocity to the enemy if they have changed direction
 # Removes the previous direction when the direction changes

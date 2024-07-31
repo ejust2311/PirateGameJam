@@ -30,12 +30,12 @@ shadow = NodePath("../Shadow")
 
 [node name="Shadow" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_kk13q")]
 position = Vector2(-36.9999, 0)
-scale = Vector2(1.13012, 1.99231)
+scale = Vector2(1.9, 1.9)
 player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("3_bx7vy")]
 position = Vector2(-4, 0)
-scale = Vector2(1.13012, 1.99231)
+scale = Vector2(1.9, 1.9)
 
 [node name="PauseMenu" parent="Player" instance=ExtResource("5_dqadf")]
 visible = false
@@ -56,14 +56,13 @@ size_flags_vertical = 4
 
 [node name="BasicBouncingEnemy" parent="Enemies" instance=ExtResource("2_wkqs7")]
 z_index = 290
-position = Vector2(521, -169)
-scale = Vector2(2, 2)
+position = Vector2(521, -182)
 
 [node name="BasicFlyingEnemy" parent="Enemies" instance=ExtResource("9_vmsgp")]
 position = Vector2(392, -283)
 
 [node name="BasicEnemy" parent="Enemies" instance=ExtResource("10_y3sjw")]
-position = Vector2(658, -180)
+position = Vector2(658, -182)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_8jq0m")
